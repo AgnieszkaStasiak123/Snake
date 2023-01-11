@@ -28,7 +28,7 @@ function GameLoop(){
 //setTimeOut --> cause game will be quicker with time
 
 function clearScreen(){
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'yellow';
     ctx.fillRect(0,0, canvas.clientWidth, canvas.height);
 
 }
