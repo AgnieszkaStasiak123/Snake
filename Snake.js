@@ -30,10 +30,14 @@ let yVelocity = 0;
 let appleX = 5;
 let appleY = 5;
 
+let changedScore = false;
+
 const sound = new Audio("gulp.mp3");
 
 function GameLoop(){
+    changedScore = false;
     changeSnakePosition();
+
     
     let result = isGameOver();
     if(result){
@@ -47,19 +51,21 @@ function GameLoop(){
     drawSnake();
     drawScore();
 
-    if(score > 2){
-        speed = 11;
-    }
-
-    if(score > 5){
-        speed = 15;
-    }
+    setSpeed();
 
     setTimeout(GameLoop, 1000/speed);
 }
 
 
 //setTimeOut --> cause game will be quicker with time
+
+function setSpeed(){
+    
+    if( score % 5 == 0 && score != 0 && changedScore == true){
+        speed = speed+2;
+        return;
+    }
+}
 
 function isGameOver(){
     let gameOver = false;
@@ -160,6 +166,7 @@ function checkAppleCollision(){
         tailLength++;
         score++;
         sound.play();
+        changedScore = true;
     }
 }
 
