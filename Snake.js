@@ -14,11 +14,11 @@ let score = 0;
 
 let speed = 7;
 
-let tileCount = 20;
+let tileCount = 25;
 let tileSize = canvas.width / tileCount - 2;
 
-let headX = 10;
-let headY = 10;
+let headX = 12;
+let headY = 12;
 
 const snakeParts = []; 
 let tailLength = 2;
@@ -101,7 +101,7 @@ function isGameOver(){
 
 function drawGameOverTxt(){
     ctx.fillStyle = "white"
-    ctx.font = "50px Verdana";
+    ctx.font = "80px Verdana";
 
     var gradient = ctx.createLinearGradient(0, 0 , canvas.width, 0)
     gradient.addColorStop("0", "magenta");
@@ -110,13 +110,13 @@ function drawGameOverTxt(){
 
     ctx.fillStyle = gradient;
 
-    ctx.fillText("GAME OVER", canvas.width / 6.5, canvas.height / 2)
+    ctx.fillText("GAME OVER", canvas.width / 10.5, canvas.height / 1.80)
 }
 
 function drawScore(){
     ctx.fillStyle = "white";
-    ctx.font = "15px Verdana"
-    ctx.fillText("Score " + score, canvas.width-70, 15);
+    ctx.font = "25px Verdana"
+    ctx.fillText("Score " + score, canvas.width-120, 25);
 }
 
 
