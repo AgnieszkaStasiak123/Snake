@@ -23,6 +23,8 @@ let headY = 12;
 const snakeParts = []; 
 let tailLength = 2;
 
+let GameOverGlobal = false;
+let enterPressed = false;
 
 let xVelocity = 0;
 let yVelocity = 0;
@@ -34,26 +36,51 @@ let changedScore = false;
 
 const sound = new Audio("gulp.mp3");
 
+function resetGame(){
+    enterPressed = false;
+    GameOverGlobal = false;
+    score = 0;
+    speed = 7;
+    
+    headX = 12;
+    headY = 12;
+
+    snakeParts.length = 0; 
+    
+    tailLength = 2;
+
+    xVelocity = 0;
+    yVelocity = 0;
+
+    appleX = 5;
+    appleY = 5;
+
+    changedScore = false;
+}
+
 function GameLoop(){
+    if(enterPressed == true){
+        resetGame();
+    }
+   
     changedScore = false;
     changeSnakePosition();
 
     
     let result = isGameOver();
     if(result){
-        console.log("GAME OVER");
-        return;
+        console.log("GAME OVER"); 
+    }else{
+        clearScreen();
+        checkAppleCollision()
+        drawApple();
+        drawSnake();
+        drawScore();
+    
+        setSpeed();
+    
+        setTimeout(GameLoop, 1000/speed);
     } 
-
-    clearScreen();
-    checkAppleCollision()
-    drawApple();
-    drawSnake();
-    drawScore();
-
-    setSpeed();
-
-    setTimeout(GameLoop, 1000/speed);
 }
 
 
@@ -76,18 +103,28 @@ function isGameOver(){
 
     if(headX < 0){
         gameOver = true;
+        GameOverGlobal = true;
+
     } else if(headX >= tileCount-1){
         gameOver = true;
+        GameOverGlobal = true;
+
     } else if(headY < 0){
         gameOver = true;
+        GameOverGlobal = true;
+
     } else if(headY >= tileCount-1){
         gameOver = true;
+        GameOverGlobal = true;
+
     } 
 
     for( let i = 0; i<snakeParts.length; i++){
         let part = snakeParts[i];
         if(part.x === headX && part.y === headY){
             gameOver = true;
+            GameOverGlobal = true;
+
             break;
         }
     }
@@ -95,7 +132,6 @@ function isGameOver(){
     if(gameOver){
         drawGameOverTxt();
     }
-
     return gameOver;
 }
 
@@ -174,7 +210,7 @@ function checkAppleCollision(){
 document.addEventListener("keydown", keyDown);
 
 function keyDown(event){
-    
+
     if(event.keyCode == 38){
         if(yVelocity == 1){
             return;
@@ -207,6 +243,17 @@ function keyDown(event){
         xVelocity = 1;
     }
 }
-
-
 GameLoop();
+
+document.addEventListener("keydown", newGame);
+
+function newGame(game){
+    if(game.keyCode == 13 && GameOverGlobal == true){
+        enterPressed = true;
+        GameLoop();
+    }
+
+}
+
+
+
