@@ -76,11 +76,11 @@ function isGameOver(){
 
     if(headX < 0){
         gameOver = true;
-    } else if(headX === tileCount){
+    } else if(headX >= tileCount-1){
         gameOver = true;
     } else if(headY < 0){
         gameOver = true;
-    } else if(headY === tileCount){
+    } else if(headY >= tileCount-1){
         gameOver = true;
     } 
 
@@ -161,12 +161,13 @@ function checkAppleCollision(){
     
     if(appleX ===  headX && appleY == headY){
         
-        appleX = Math.floor(Math.random() * tileCount);
-        appleY = Math.floor(Math.random() * tileCount);
+        appleX = Math.floor(Math.random() * (tileCount-1));
+        appleY = Math.floor(Math.random() * (tileCount-1));
         tailLength++;
         score++;
         sound.play();
         changedScore = true;
+        
     }
 }
 

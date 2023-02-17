@@ -5,4 +5,5 @@ more fruits (diff points)
 power ups
 flashy Game OVER
 more sounds
-do sth with this whit background
+do sth with this white background
+game restarts when enter after game OVER
