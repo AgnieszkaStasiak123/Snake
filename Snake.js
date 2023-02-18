@@ -8,6 +8,14 @@ class SnakePart{
         this.x = x;
         this.y = y;
     }
+    
+    get X() {
+        return this.x;
+    }
+
+    get Y() {
+        return this.y;
+    }
 }
 
 let score = 0;
@@ -186,7 +194,6 @@ function drawSnake(){
     
     ctx.fillStyle = 'orange';
     ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
-
 }
 
 function changeSnakePosition(){
@@ -201,17 +208,32 @@ function drawApple(){
     ctx.fillRect (appleX * tileCount, appleY*tileCount , tileSize, tileSize);
 }
 
+    let newAppleCol = false;
+
 function checkAppleCollision(){
-    
+
     if(appleX ===  headX && appleY == headY){
+        do{
+            newAppleCol = false;
+            appleX = Math.floor(Math.random() * (tileCount-1));
+            appleY = Math.floor(Math.random() * (tileCount-1));
+            
+            if(appleX == headX && appleY == headY){
+                newAppleCol = true;
+            }
+
+            for(let i = 0; i< snakeParts.length; i++){
+                if(appleX == snakeParts[i].X && appleY == snakeParts[i].Y ){
+                    newAppleCol = true;
+                }
+            }
+
+        } while(newAppleCol != false);
         
-        appleX = Math.floor(Math.random() * (tileCount-1));
-        appleY = Math.floor(Math.random() * (tileCount-1));
         tailLength++;
         score++;
         sound.play();
         changedScore = true;
-        
     }
 }
 
