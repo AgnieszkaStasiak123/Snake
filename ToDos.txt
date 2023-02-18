@@ -1,4 +1,3 @@
-interactive score (moves when add a figure)
 apples cant show where body is
 my own graphics (for everything)
 more fruits (diff points)
@@ -6,4 +5,7 @@ power ups
 flashy Game OVER
 more sounds
 do sth with this white background
+
+DONE:
 game restarts when enter after game OVER
+interactive score (moves when add a figure)

@@ -14,10 +14,22 @@ body{
 
 canvas{
     background-color: #fff;
-    display: block;
+    display: inline block;
     margin: 0 auto;
     box-shadow: rgb(41, 36, 26) 20px 10px 50px;
     border-radius: 5px;
     border-width: 30px;
     border-color: rgb(0, 0, 0);
+}
+
+#Snake {
+   display: inline-block;
+   height: 8%;
+   width: 8%;
+}
+
+h1{
+    display: inline-block;
+    margin: 0%;
+
 }

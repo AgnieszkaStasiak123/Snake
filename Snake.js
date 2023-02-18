@@ -152,7 +152,15 @@ function drawGameOverTxt(){
 function drawScore(){
     ctx.fillStyle = "white";
     ctx.font = "25px Verdana"
-    ctx.fillText("Score " + score, canvas.width-120, 25);
+    if(score < 10){
+        ctx.fillText("Score " + score, canvas.width-105, 25);
+    } else if (score < 100){
+        ctx.fillText("Score " + score, canvas.width-120, 25);
+    } else if (score < 1000){
+        ctx.fillText("Score " + score, canvas.width-140, 25);
+    } else {
+        ctx.fillText("Score " + score, canvas.width-160, 25);
+    }
 }
 
 
