@@ -172,10 +172,11 @@ function drawScore(){
 }
 
 
-function clearScreen(){
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0,0, canvas.clientWidth, canvas.height);
-
+function clearScreen() {
+    // ctx.fillStyle = 'black';
+    // ctx.fillRect(0,0, canvas.clientWidth, canvas.height);
+    const img = document.getElementById("bcg");
+    ctx.drawImage(img, 0, 0);
 }
 
 function drawSnake(){
