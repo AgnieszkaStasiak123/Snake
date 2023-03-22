@@ -109,19 +109,19 @@ function isGameOver(){
         return false;
     }
 
-    if(headX < 0){
+    if(headX < 1){
         gameOver = true;
         GameOverGlobal = true;
 
-    } else if(headX >= tileCount-1){
+    } else if(headX >= tileCount-2){
         gameOver = true;
         GameOverGlobal = true;
 
-    } else if(headY < 0){
+    } else if(headY < 1){
         gameOver = true;
         GameOverGlobal = true;
 
-    } else if(headY >= tileCount-1){
+    } else if(headY >= tileCount-2){
         gameOver = true;
         GameOverGlobal = true;
 
@@ -173,8 +173,6 @@ function drawScore(){
 
 
 function clearScreen() {
-    // ctx.fillStyle = 'black';
-    // ctx.fillRect(0,0, canvas.clientWidth, canvas.height);
     const img = document.getElementById("bcg");
     ctx.drawImage(img, 0, 0);
 }
