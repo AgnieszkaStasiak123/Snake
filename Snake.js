@@ -96,9 +96,9 @@ function GameLoop(){
 
 function setSpeed(){
     
-    if( score % 5 == 0 && score != 0 && changedScore == true){
+    if( score % 5 === 0 && score !== 0 && changedScore === true){
         speed = speed+2;
-        return;
+
     }
 }
 
@@ -214,8 +214,8 @@ function checkAppleCollision(){
     if(appleX ===  headX && appleY == headY){
         do{
             newAppleCol = false;
-            appleX = Math.floor(Math.random() * (tileCount-1));
-            appleY = Math.floor(Math.random() * (tileCount-1));
+            appleX = Math.floor(Math.random() * (tileCount-2)); //TODO:: apples show on a brim
+            appleY = Math.floor(Math.random() * (tileCount-2));
             
             if(appleX == headX && appleY == headY){
                 newAppleCol = true;
