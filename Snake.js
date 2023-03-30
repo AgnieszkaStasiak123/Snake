@@ -1,4 +1,3 @@
-console.log('Snake.js loaded');
 const canvas = document.getElementById('canvas'); 
 const ctx = canvas.getContext('2d');
 
@@ -76,9 +75,7 @@ function GameLoop(){
 
     
     let result = isGameOver();
-    if(result){
-        console.log("GAME OVER"); 
-    }else{
+    if(!result){
         clearScreen();
         checkAppleCollision()
         drawApple();
@@ -179,7 +176,7 @@ function clearScreen() {
 
 function drawSnake(){
 
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = "#3B930B";
     for (let i = 0; i< snakeParts.length; i++){
         let part = snakeParts[i];
         ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
@@ -191,7 +188,7 @@ function drawSnake(){
         snakeParts.shift();
     }
     
-    ctx.fillStyle = 'orange';
+    ctx.fillStyle = "#1C651B";
     ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
 }
 
@@ -214,9 +211,9 @@ function checkAppleCollision(){
     if(appleX ===  headX && appleY == headY){
         do{
             newAppleCol = false;
-            appleX = Math.floor(Math.random() * (tileCount-2)); //TODO:: apples show on a brim
-            appleY = Math.floor(Math.random() * (tileCount-2));
-            
+            appleX = Math.floor(Math.random() * (tileCount-3)+1);
+            appleY = Math.floor(Math.random() * (tileCount-3)+1);
+                        
             if(appleX == headX && appleY == headY){
                 newAppleCol = true;
             }
